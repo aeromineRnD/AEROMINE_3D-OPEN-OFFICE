@@ -31,6 +31,8 @@ async function init() {
   }
 
   spinnerEl.style.display = 'none';
+
+  document.getElementById('btn-reset').addEventListener('click', () => viewer.resetCamera());
 }
 
 document.addEventListener('DOMContentLoaded', init);

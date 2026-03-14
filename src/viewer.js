@@ -134,6 +134,23 @@ export class Viewer {
 
     this.controls.maxDistance = size * 5;
     this.controls.minDistance = size * 0.05;
+
+    // Save home position for reset
+    this._home = {
+      camPos: this.camera.position.clone(),
+      target: new Vector3(0, 0, 0),
+    };
+  }
+
+  resetCamera() {
+    if (!this._home) return;
+    this._anim = {
+      camFrom:    this.camera.position.clone(),
+      camTo:      this._home.camPos.clone(),
+      targetFrom: this.controls.target.clone(),
+      targetTo:   this._home.target.clone(),
+      t: 0,
+    };
   }
 
   // -------------------------------------------------------------------------

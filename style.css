@@ -328,6 +328,32 @@ html, body {
 
 .site-footer a:hover { color: var(--accent); }
 
+/* ─── Reset camera button ────────────────────────────────────── */
+#btn-reset {
+  position: fixed;
+  bottom: 48px;
+  right: 16px;
+  z-index: 100;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(16, 18, 24, 0.88);
+  backdrop-filter: blur(10px);
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#btn-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ─── Error state ─────────────────────────────────────────────── */
 .load-error {
   position: absolute;
