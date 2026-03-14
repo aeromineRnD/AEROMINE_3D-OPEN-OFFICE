@@ -34,6 +34,13 @@ async function init() {
 
   document.getElementById('btn-reset').addEventListener('click', () => viewer.resetCamera());
   document.getElementById('search').addEventListener('input', e => tagManager.filter(e.target.value));
+
+  document.querySelectorAll('.legend-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      tagManager.toggleCategory(btn.dataset.category);
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

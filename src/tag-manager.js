@@ -7,9 +7,11 @@ const TAG_Y_OFFSET = 0.3;
 
 export class TagManager {
   constructor(viewer, popup) {
-    this.viewer = viewer;
-    this.popup  = popup;
-    this._tags  = [];
+    this.viewer            = viewer;
+    this.popup             = popup;
+    this._tags             = [];
+    this._query            = '';
+    this._hiddenCategories = new Set();
   }
 
   /**
@@ -88,18 +90,35 @@ export class TagManager {
   }
 
   filter(query) {
-    const q = query.trim().toLowerCase();
+    this._query = query.trim().toLowerCase();
+    this._applyFilter();
+  }
+
+  toggleCategory(category) {
+    if (this._hiddenCategories.has(category)) {
+      this._hiddenCategories.delete(category);
+    } else {
+      this._hiddenCategories.add(category);
+    }
+    this._applyFilter();
+  }
+
+  _applyFilter() {
     this._tags.forEach(({ obj, object3d }) => {
       const el = object3d.element;
-      if (!q) {
-        el.style.opacity = '1';
-        el.style.pointerEvents = 'auto';
-        return;
-      }
-      const match = obj.name.toLowerCase().includes(q) ||
-                    obj.category.toLowerCase().includes(q);
-      el.style.opacity      = match ? '1' : '0.15';
-      el.style.pointerEvents = match ? 'auto' : 'none';
+
+      // Resolve the broad group label used in the legend
+      const group = obj.category === 'Emergency Alert' || obj.category === 'Emergency Egress'
+        ? 'Emergency' : obj.category;
+
+      const categoryVisible = !this._hiddenCategories.has(group);
+      const searchMatch = !this._query ||
+        obj.name.toLowerCase().includes(this._query) ||
+        obj.category.toLowerCase().includes(this._query);
+
+      const visible = categoryVisible && searchMatch;
+      el.style.opacity       = visible ? '1' : '0.15';
+      el.style.pointerEvents = visible ? 'auto' : 'none';
     });
   }
 
