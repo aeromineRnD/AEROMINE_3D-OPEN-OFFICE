@@ -33,6 +33,7 @@ async function init() {
   spinnerEl.style.display = 'none';
 
   document.getElementById('btn-reset').addEventListener('click', () => viewer.resetCamera());
+  document.getElementById('search').addEventListener('input', e => tagManager.filter(e.target.value));
 }
 
 document.addEventListener('DOMContentLoaded', init);

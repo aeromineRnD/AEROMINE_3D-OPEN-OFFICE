@@ -64,6 +64,39 @@ html, body {
   text-transform: uppercase;
 }
 
+/* ─── Header search ──────────────────────────────────────────── */
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 0.65rem;
+  height: 28px;
+}
+
+.search-icon {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.header-search input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  width: 140px;
+}
+
+.header-search input::placeholder {
+  color: var(--muted);
+}
+
 /* ─── 3D Canvas container ─────────────────────────────────────── */
 #app {
   position: fixed;

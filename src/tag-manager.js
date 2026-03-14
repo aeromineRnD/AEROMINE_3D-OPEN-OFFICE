@@ -87,6 +87,22 @@ export class TagManager {
     return tagObj;
   }
 
+  filter(query) {
+    const q = query.trim().toLowerCase();
+    this._tags.forEach(({ obj, object3d }) => {
+      const el = object3d.element;
+      if (!q) {
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+        return;
+      }
+      const match = obj.name.toLowerCase().includes(q) ||
+                    obj.category.toLowerCase().includes(q);
+      el.style.opacity      = match ? '1' : '0.15';
+      el.style.pointerEvents = match ? 'auto' : 'none';
+    });
+  }
+
   dispose() {
     this._tags.forEach(({ object3d }) => {
       if (object3d.parent) object3d.parent.remove(object3d);
