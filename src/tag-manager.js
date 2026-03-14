@@ -67,6 +67,7 @@ export class TagManager {
 
     const el = document.createElement('div');
     el.className = `building-tag ${categoryClass}`;
+    el.dataset.tooltip = obj.name;
     el.innerHTML = `
       <span class="tag-icon">${obj.icon}</span>
       <span class="tag-name">${obj.name}</span>
