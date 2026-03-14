@@ -1,0 +1,14 @@
+FireExtinguisher_1
+FireExtinguisher_2
+FireExtinguisher_3
+FireExtinguisher_4
+FireExtinguisher_5
+Exit_Sign_Box
+FireAlarmButton
+conf_table_1
+conf_table_2
+conf_table_3
+conf_table_4
+FirstAidCabinet.Body
+FirstAidCabinet.Door
+Circle 
