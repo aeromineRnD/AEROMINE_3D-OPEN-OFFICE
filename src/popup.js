@@ -44,6 +44,7 @@ export class Popup {
   }
 
   show(obj) {
+    document.body.classList.add('panel-open');
     const p = this._panel;
 
     p.querySelector('.panel-icon').textContent     = obj.icon;
@@ -81,6 +82,7 @@ export class Popup {
 
   hide() {
     this._panel.classList.remove('open');
+    document.body.classList.remove('panel-open');
     this._open = false;
   }
 }

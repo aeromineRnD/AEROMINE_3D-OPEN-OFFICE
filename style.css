@@ -456,6 +456,7 @@ html, body {
   color: var(--muted);
   font-size: 1.1rem;
   cursor: pointer;
+  touch-action: manipulation;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -537,5 +538,18 @@ html, body {
   .building-tag {
     width: 11px;
     height: 11px;
+  }
+
+  /* Reset button: move above the bottom sheet panel zone */
+  #btn-reset {
+    bottom: auto;
+    top: 60px;
+    right: 8px;
+  }
+
+  /* Hide legend while info panel is open to prevent overlap */
+  body.panel-open #legend {
+    opacity: 0;
+    pointer-events: none;
   }
 }
